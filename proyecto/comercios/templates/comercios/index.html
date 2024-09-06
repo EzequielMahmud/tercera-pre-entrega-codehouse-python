@@ -1,0 +1,20 @@
+{% extends 'comercios/base.html' %}
+
+{% block header %}
+    Mi Comercio
+{% endblock header %}
+
+{% block main %}
+    <button>
+        <a href="{% url 'index' %}">🏠Home</a>
+    </button>
+    <button>
+        <a href="">🧑Clientes</a>
+    </button>
+    <button>
+        <a href="">👔Ropa</a>
+    </button>
+    <button>
+        <a href="">💲Ventas</a>
+    </button>
+{% endblock main %}
