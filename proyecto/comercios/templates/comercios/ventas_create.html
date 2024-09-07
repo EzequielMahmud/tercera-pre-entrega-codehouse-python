@@ -5,5 +5,10 @@ Ventas: Formulario de creación
 {% endblock header %}
 
 {% block main %}
-    
+<form action="" method="post"></form>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Crear</button>
+</form>
+<a href="{% url 'ventas_list' %}">Volver</a>
 {% endblock main %}

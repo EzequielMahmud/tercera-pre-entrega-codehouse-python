@@ -5,6 +5,7 @@ Clientes: Listado de clientes
 {% endblock header %}
 
 {% block main %}
+    <button><a href="{% url 'ropa_create' %}">Crear Registro de Clientes</a></button>
     {% for object in object_list %}
         <p style="text-align: left;">{{ object }}</p>
     {% empty %}

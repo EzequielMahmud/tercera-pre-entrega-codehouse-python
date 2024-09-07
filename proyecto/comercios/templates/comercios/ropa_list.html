@@ -5,6 +5,8 @@ Ropa: Listado de ropa
 {% endblock header %}
 
 {% block main %}
+    <button><a href="{% url 'ropa_create' %}">Crear Registro de Ropa</a></button>
+
     {% for object in object_list %}
         <p>{{ object }}.</p>
         <p>PRECIO: {{object.precio}}</p>

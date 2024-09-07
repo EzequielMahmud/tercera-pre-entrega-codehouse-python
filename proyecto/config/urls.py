@@ -22,10 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.index, name="index"),
     path("cliente/list", views.cliente_list, name="cliente_list"),
-    # path("cliente/create", views.cliente_create, name="cliente_create"),
+    path("cliente/create", views.cliente_create, name="cliente_create"),
     path("ropa/list", views.ropa_list, name="ropa_list"),
-    # path("ropa/create", views.ropa_create, name="ropa_create"),
+    path("ropa/create", views.ropa_create, name="ropa_create"),
     path("ventas/list", views.ventas_list, name="ventas_list"),
-    # path("ventas/create", views.ventas_create, name="ventas_create"),
+    path("ventas/create", views.ventas_create, name="ventas_create"),
 
 ]

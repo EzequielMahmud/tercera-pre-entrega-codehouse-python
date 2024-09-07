@@ -5,5 +5,23 @@ Ropa: Formulario de creación
 {% endblock header %}
 
 {% block main %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
     
+    <h3>Agregar Talles y Stock</h3>
+    {{ formset.management_form }}
+    
+    <table>
+        {% for form in formset %}
+        <tr>
+            <td>{{ form.talle.label }} {{ form.talle }}</td>
+            <td>{{ form.stock.label }} {{ form.stock }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'ropa_list' %}">Volver</a>
 {% endblock main %}

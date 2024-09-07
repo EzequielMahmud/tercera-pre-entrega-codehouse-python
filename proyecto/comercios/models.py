@@ -1,6 +1,7 @@
 from django.db import models
 
-# Create your models here.
+# -------------------------------------------------------------------------------------------------------- #
+
 class Cliente(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
@@ -17,6 +18,7 @@ class Cliente(models.Model):
         verbose_name = "Cliente"
         verbose_name_plural = "Clientes"
 
+# -------------------------------------------------------------------------------------------------------- #
 
 class Ropa(models.Model):
     class TiposRopa(models.TextChoices):
@@ -40,6 +42,8 @@ class Ropa(models.Model):
         verbose_name = "Ropa"
         verbose_name_plural = "Ropa"
 
+""" ---------------------------------------------------------------------------------------------- """
+
 class Talle(models.Model):
     class Talles(models.TextChoices):
         S = 's', 'S'
@@ -59,6 +63,7 @@ class Talle(models.Model):
         verbose_name = "Talle"
         verbose_name_plural = "Talles"
 
+# -------------------------------------------------------------------------------------------------------- #
 
 class Ventas(models.Model):
     class Estado(models.TextChoices): #uso choices para seleccionar el estado
