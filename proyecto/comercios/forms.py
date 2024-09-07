@@ -6,7 +6,7 @@ from .models import Cliente, Ropa, Ventas, Talle
 
 class ClienteForm(forms.ModelForm):
     class Meta:
-        model = Ropa
+        model = Cliente
         fields = '__all__'
 
 # -------------------------------------------------------------------------------------------------------- #
@@ -22,5 +22,5 @@ TalleFormSet = inlineformset_factory(Ropa, Talle, fields=('talle', 'stock'), ext
 
 class VentasForm(forms.ModelForm):
     class Meta:
-        model = Ropa
+        model = Ventas
         fields = '__all__'

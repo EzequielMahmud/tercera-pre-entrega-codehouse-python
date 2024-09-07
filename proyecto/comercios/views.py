@@ -14,9 +14,15 @@ def cliente_list(request):
     return render(request, 'comercios/cliente_list.html', context)
 
 def cliente_create(request):
-    query = Cliente.objects.all()
-    context = {"object_list": query}
-    return render(request, 'comercios/cliente_create.html', context)
+    if request.method == 'GET':
+        form = ClienteForm()
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('cliente_list')
+
+    return render(request, 'comercios/cliente_create.html', {"form": form})
 
 # -------------------------------------------------------------------------------------------------------- #
 
@@ -54,8 +60,16 @@ def ventas_list(request):
     return render(request, 'comercios/ventas_list.html', context)
 
 def ventas_create(request):
-    query = Cliente.objects.all()
-    context = {"object_list": query}
-    return render(request, 'comercios/ventas_create.html', context)
+    if request.method == 'GET':
+        form = VentasForm()
+    elif request.method == 'POST':
+        form = VentasForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('ventas_list')
+        else:
+            print(form.errors)
+
+    return render(request, 'comercios/ventas_create.html', {"form": form})
 
 # -------------------------------------------------------------------------------------------------------- #
