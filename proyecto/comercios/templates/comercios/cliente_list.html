@@ -1,0 +1,13 @@
+{% extends 'comercios/base.html' %}
+
+{% block header %}
+Clientes: Listado de clientes
+{% endblock header %}
+
+{% block main %}
+    {% for object in object_list %}
+        <p style="text-align: left;">{{ object }}</p>
+    {% empty %}
+        <p style="text-align: left;">No hay registros disponibles.</p>
+    {% endfor %}
+{% endblock main %}

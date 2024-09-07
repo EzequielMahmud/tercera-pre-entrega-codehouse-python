@@ -1,0 +1,27 @@
+{% extends 'comercios/base.html' %}
+
+{% block header %}
+Ropa: Listado de ropa
+{% endblock header %}
+
+{% block main %}
+    {% for object in object_list %}
+        <p>{{ object }}.</p>
+        <p>PRECIO: {{object.precio}}</p>
+        <span>STOCK:</span>
+        {% if object.talles.all %}
+            {% for talle in object.talles.all %}
+                {% if talle.stock > 0 %}
+                    <span>
+                        {{ talle.talle | upper }}: {{ talle.stock }}{% if not forloop.last %} | {% endif %}
+                    </span>
+                {% endif %}
+                
+            {% endfor %}
+        {% else %}
+            <p>No hay talles disponibles.</p>
+        {% endif %}
+    {% empty %}
+        <p>No hay registros disponibles.</p>
+    {% endfor %}
+{% endblock main %}

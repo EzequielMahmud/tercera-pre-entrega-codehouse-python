@@ -1,0 +1,16 @@
+{% extends 'comercios/base.html' %}
+
+{% block header %}
+Ventas: Listado de ventas
+{% endblock header %}
+
+{% block main %}
+    {% for object in object_list %}
+        {% if object.estado == 'PENDIENTE' %}
+            <p>{{ object }}. <br> ESTADO: {{object.get_estado_display}} para entregar el día {{ object.fecha_entrega }}</p>
+            <br>
+        {% endif %}
+    {% empty %}
+        <p>No hay registros disponibles.</p>
+    {% endfor %}
+{% endblock main %}
