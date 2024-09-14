@@ -7,6 +7,7 @@ class Cliente(models.Model):
     apellido = models.CharField(max_length=50)
     celular = models.CharField(max_length=15)
     domicilio = models.CharField(max_length=200, blank=True, null=True)
+    nacimiento = models.DateField(blank=True, null=True)
 
     def __str__(self) -> str:
         if self.domicilio is not None:
@@ -73,11 +74,17 @@ class Ventas(models.Model):
         CANCELADO = 'CANCELADO', 'Cancelado'
 
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cliente_nombre = models.CharField(max_length=100, blank=True)  
     ropa = models.ForeignKey(Ropa, on_delete=models.CASCADE)
     descripcion = models.TextField(max_length=250, blank=True, null=True)
     fecha_solicitud = models.DateTimeField(auto_now_add=True)
     fecha_entrega = models.DateTimeField(blank=True, null=True)
     estado = models.CharField(max_length=20, choices=Estado.choices, default=Estado.PENDIENTE)
+
+    def save(self, *args, **kwargs):
+        # Guardar el nombre y apellido del cliente en el campo cliente_nombre
+        self.cliente_nombre = f"{self.cliente.apellido} {self.cliente.nombre}"
+        super(Ventas, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
         return f"Pedido de {self.ropa} para {self.cliente.nombre} {self.cliente.apellido}"

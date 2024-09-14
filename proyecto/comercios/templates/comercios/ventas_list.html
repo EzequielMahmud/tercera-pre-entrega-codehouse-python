@@ -6,6 +6,12 @@ Ventas: Listado de ventas
 
 {% block main %}
     <button><a href="{% url 'ventas_create' %}">Crear Registro de Ventas</a></button>
+
+    <form action="{% url 'ventas_list' %}" method="get">
+        <input type="text" name="q" placeholder="Buscar">
+        <button type="submit">Buscar Ventas</button>
+    </form>
+
     {% for object in object_list %}
         {% if object.estado == 'PENDIENTE' %}
             <p>{{ object }}. <br> ESTADO: {{object.get_estado_display}} para entregar el día {{ object.fecha_entrega }}</p>

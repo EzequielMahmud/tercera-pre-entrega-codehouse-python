@@ -7,6 +7,11 @@ Ropa: Listado de ropa
 {% block main %}
     <button><a href="{% url 'ropa_create' %}">Crear Registro de Ropa</a></button>
 
+    <form action="{% url 'ropa_list' %}" method="get">
+        <input type="text" name="q" placeholder="Buscar">
+        <button type="submit">Buscar Ropa</button>
+    </form>
+
     {% for object in object_list %}
         <p>{{ object }}.</p>
         <p>PRECIO: {{object.precio}}</p>

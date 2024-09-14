@@ -5,7 +5,12 @@ Clientes: Listado de clientes
 {% endblock header %}
 
 {% block main %}
-    <button><a href="{% url 'cliente_create' %}">Crear Registro de Clientes</a></button>
+<button><a href="{% url 'cliente_create' %}">Crear Registro de Clientes</a></button>
+    <form action="{% url 'cliente_list' %}" method="get">
+        <input type="text" name="q" placeholder="Buscar">
+        <button type="submit">Buscar Clientes</button>
+    </form>
+
     {% for object in object_list %}
         <p style="text-align: left;">{{ object }}</p>
     {% empty %}

@@ -9,7 +9,11 @@ def index(request):
 # -------------------------------------------------------------------------------------------------------- #
 
 def cliente_list(request):
-    query = Cliente.objects.all()
+    q = request.GET.get('q')
+    if q:
+        query = Cliente.objects.filter(nombre__icontains=q) and Cliente.objects.filter(apellido__icontains=q)
+    else:
+        query = Cliente.objects.all()
     context = {"object_list": query}
     return render(request, 'comercios/cliente_list.html', context)
 
@@ -27,7 +31,11 @@ def cliente_create(request):
 # -------------------------------------------------------------------------------------------------------- #
 
 def ropa_list(request):
-    query = Ropa.objects.all()
+    q = request.GET.get('q')
+    if q:
+        query = Ropa.objects.filter(nombre__icontains=q)
+    else:
+        query = Ropa.objects.all()
     context = {"object_list": query}
     return render(request, 'comercios/ropa_list.html', context)
 
@@ -55,7 +63,11 @@ def ropa_create(request):
 # -------------------------------------------------------------------------------------------------------- #
 
 def ventas_list(request):
-    query = Ventas.objects.all()
+    q = request.GET.get('q')
+    if q:
+        query = Ventas.objects.filter(cliente_nombre__icontains=q)
+    else:
+        query = Ventas.objects.all()
     context = {"object_list": query}
     return render(request, 'comercios/ventas_list.html', context)
 
